@@ -1,16 +1,15 @@
-namespace InventoryApplication.Domain.Entities
+namespace InventoryApplication.Domain.Entities;
+
+public class SubCategory
 {
-    public class SubCategory
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string? Description { get; set; }
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string? Description { get; set; }
 
-        // Foreign Key به Category
-        public int CategoryId { get; set; }
-        public Category Category { get; set; }
+    // Foreign Key
+    public int CategoryId { get; set; }
+    public Category Category { get; set; }
 
-        // ONE TO MANY
-        public ICollection<Product> Products { get; set; } = new List<Product>();
-    }
+    // Navigation Property
+    public ICollection<Product> Products { get; set; } = new List<Product>();
 }

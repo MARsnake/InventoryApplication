@@ -48,13 +48,7 @@ public class AppDbContext : DbContext
             entity.Property(p => p.Quantity)
                 .HasPrecision(18, 2);
 
-            // Product -> Category (Required)
-            entity.HasOne(p => p.Category)
-                .WithMany(c => c.Products)
-                .HasForeignKey(p => p.CategoryId)
-                .IsRequired()
-                .OnDelete(DeleteBehavior.Restrict);
-
+            
             // Product -> SubCategory (Required)
             entity.HasOne(p => p.SubCategory)
                 .WithMany(s => s.Products)

@@ -116,4 +116,4 @@ D:\.net training projects\InventoryApplication\InventoryApplication\bin\Debug\ne
 D:\.net training projects\InventoryApplication\InventoryApplication\bin\Debug\net10.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 D:\.net training projects\InventoryApplication\InventoryApplication\bin\Debug\net10.0\FluentValidation.dll
 D:\.net training projects\InventoryApplication\InventoryApplication\bin\Debug\net10.0\FluentValidation.DependencyInjectionExtensions.dll
-D:\.net training projects\InventoryApplication\InventoryApplication\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
+D:\.net training projects\InventoryApplication\InventoryApplication\obj\Debug\net10.0\InventoryApplication.sourcelink.json
