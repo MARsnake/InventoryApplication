@@ -1,4 +1,5 @@
 using InventoryApplication.Domain.Entities;
+using InventoryApplication.Domain.Entities.Customers_Companies;
 using Microsoft.EntityFrameworkCore;
 
 namespace InventoryApplication.Infrastructure.Data;
@@ -23,7 +24,7 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<Product>(entity =>
         {
             entity.Property(p => p.Unit)
-                .HasConversion<int>();
+                .HasConversion<string>();
             entity.HasKey(p => p.Id);
 
             entity.Property(p => p.Name)
@@ -118,6 +119,58 @@ public class AppDbContext : DbContext
             entity.Property(h => h.Description)
                 .HasMaxLength(1000);
         });
-        
+        //com[ny , customer
+        modelBuilder.Entity<Customer>(entity =>
+        {
+            entity.HasKey(c => c.Id);
+
+            entity.Property(c => c.Name)
+                .IsRequired()
+                .HasMaxLength(150);
+
+            entity.Property(c => c.PhoneNumber)
+                .HasMaxLength(20);
+
+            entity.Property(c => c.Email)
+                .HasMaxLength(150);
+
+            entity.Property(c => c.Address)
+                .HasMaxLength(500);
+
+            entity.HasOne(c => c.Company)
+                .WithMany(c => c.Customers)
+                .HasForeignKey(c => c.CompanyId)
+                .OnDelete(DeleteBehavior.Restrict);
+        });
+
+        modelBuilder.Entity<Company>(entity =>
+        {
+            entity.HasKey(c => c.Id);
+
+            entity.Property(c => c.Name)
+                .IsRequired()
+                .HasMaxLength(150);
+
+            entity.Property(c => c.PhoneNumber)
+                .HasMaxLength(20);
+
+            entity.Property(c => c.Email)
+                .HasMaxLength(150);
+
+            entity.Property(c => c.Website)
+                .HasMaxLength(200);
+
+            entity.Property(c => c.Address)
+                .HasMaxLength(500);
+
+            entity.Property(c => c.NationalId)
+                .HasMaxLength(20);
+
+            entity.Property(c => c.EconomicCode)
+                .HasMaxLength(20);
+
+            entity.Property(c => c.RegistrationNumber)
+                .HasMaxLength(30);
+        });
     }
 }
