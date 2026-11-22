@@ -22,6 +22,8 @@ public class AppDbContext : DbContext
         //Product
         modelBuilder.Entity<Product>(entity =>
         {
+            entity.Property(p => p.Unit)
+                .HasConversion<int>();
             entity.HasKey(p => p.Id);
 
             entity.Property(p => p.Name)
@@ -102,7 +104,20 @@ public class AppDbContext : DbContext
             entity.HasIndex(s => new { s.CategoryId, s.Name })
                 .IsUnique();
         });
+        // ProductPriceHistory
+        modelBuilder.Entity<ProductPriceHistory>(entity =>
+        {
+            entity.HasKey(h => h.Id);
 
+            entity.Property(h => h.PurchPrice)
+                .HasPrecision(18, 2);
+
+            entity.Property(h => h.SalePrice)
+                .HasPrecision(18, 2);
+
+            entity.Property(h => h.Description)
+                .HasMaxLength(1000);
+        });
         
     }
 }

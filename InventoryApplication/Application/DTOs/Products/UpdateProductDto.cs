@@ -1,3 +1,4 @@
+using InventoryApplication.Domain.Enum;
 namespace InventoryApplication.Application.DTOs.Products;
 
 public class UpdateProductDto
@@ -13,4 +14,5 @@ public class UpdateProductDto
     public decimal SalePrice { get; set; }
 
     public int SubCategoryId { get; set; }
+    public UnitType Unit { get; set; }
 }

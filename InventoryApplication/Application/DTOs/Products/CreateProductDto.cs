@@ -1,3 +1,4 @@
+using InventoryApplication.Domain.Enum;
 namespace InventoryApplication.Application.DTOs.Products;
 
 public class CreateProductDto
@@ -13,4 +14,5 @@ public class CreateProductDto
     public decimal SalePrice { get; set; }
 
     public decimal Quantity { get; set; }
+    public UnitType Unit { get; set; } = UnitType.Piece;
 }

@@ -32,5 +32,8 @@ public class UpdateProductValidator : AbstractValidator<UpdateProductDto>
         RuleFor(p => p.SalePrice)
             .GreaterThan(0)
             .WithMessage("قیمت فروش باید بزرگ‌تر از صفر باشد");
+        RuleFor(p => p.Unit)
+            .IsInEnum()
+            .WithMessage("واحد اندازه‌گیری معتبر نیست");
     }
 }

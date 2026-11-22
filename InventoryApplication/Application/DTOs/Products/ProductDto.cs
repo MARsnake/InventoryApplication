@@ -1,3 +1,4 @@
+using InventoryApplication.Domain.Enum;
 namespace InventoryApplication.Application.DTOs.Products;
 
 public class ProductDto
@@ -15,6 +16,7 @@ public class ProductDto
     public decimal SalePrice { get; set; }
 
     public decimal Quantity { get; set; }
+    public UnitType Unit { get; set; }
 
     public bool IsActive { get; set; }
 

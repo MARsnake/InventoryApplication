@@ -32,5 +32,10 @@ public class CreateProductValidator : AbstractValidator<CreateProductDto>
         RuleFor(p => p.Quantity)
             .GreaterThanOrEqualTo(0)
             .WithMessage("موجودی نمی‌تواند منفی باشد");
+        
+        RuleFor(p => p.Unit)
+            .IsInEnum()
+            .WithMessage("واحد اندازه‌گیری معتبر نیست");
+        
     }
 }

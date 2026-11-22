@@ -1,4 +1,6 @@
-﻿namespace InventoryApplication.Domain.Entities;
+﻿
+using InventoryApplication.Domain.Enum;
+namespace InventoryApplication.Domain.Entities;
 
 public class Product
 {
@@ -10,11 +12,12 @@ public class Product
     public decimal PurchPrice { get; set; }
     public decimal SalePrice { get; set; }
     public decimal Quantity { get; set; }
+    public UnitType Unit { get; set; } = UnitType.Piece;
 
     public bool IsActive { get; set; } = true;
 
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-    public DateTime? UpdatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime? UpdatedAt { get; set; } 
 
     // Foreign Key به SubCategory
     public int SubCategoryId { get; set; }
