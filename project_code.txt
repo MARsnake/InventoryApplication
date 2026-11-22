@@ -1,0 +1,761 @@
+﻿===== D:\.net training projects\InventoryApplication\InventoryApplication\Application\DTOs\Categories\CategoryDto.cs =====
+using InventoryApplication.Application.DTOs.SubCategories;
+
+namespace InventoryApplication.Application.DTOs.Categories;
+
+public class CategoryDto
+{
+    public int Id { get; set; }
+    public required string Name { get; set; }
+    public string? Description { get; set; }
+
+    public ICollection<SubCategorySummaryDto> SubCategories { get; set; }
+        = new List<SubCategorySummaryDto>();
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Application\DTOs\Categories\CategorySummaryDto.cs =====
+namespace InventoryApplication.Application.DTOs.Categories;
+
+public class CategorySummaryDto
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Application\DTOs\Categories\CreateCategoryDto.cs =====
+namespace InventoryApplication.Application.DTOs.Categories;
+
+public class CreateCategoryDto
+{
+   
+   public required string Name { get; set; }
+    public string? Description { get; set; }
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Application\DTOs\Categories\UpdateCategoryDto.cs =====
+namespace InventoryApplication.Application.DTOs.Categories;
+
+public class UpdateCategoryDto
+    {
+        public int Id { get; set; }
+        public required string Name { get; set; }
+        public string? Description { get; set; }
+        
+    }
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Application\DTOs\Products\CreateProductDto.cs =====
+namespace InventoryApplication.Application.DTOs.Products;
+
+public class CreateProductDto
+{
+    public required string ProductName { get; set; }
+    public string? Description { get; set; }
+    public int CategoryId { get; set; }
+    public int SubCategoryId { get; set; }
+    public decimal PurchasePrice { get; set; }
+    public decimal SalePrice { get; set; }
+    public decimal Quantity { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Application\DTOs\Products\ProductDto.cs =====
+
+
+
+namespace InventoryApplication.Application.DTOs.Products;
+
+public class ProductDto
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Sku { get; set; }
+    public string? Description { get; set; }
+    public decimal PurchPrice { get; set; }
+    public decimal SalePrice { get; set; }
+    public decimal Quantity { get; set; }
+    public bool IsActive { get; set; } = true;
+    public bool IsDeleted { get; set; } = false;
+    public DateTime? DeletedAt { get;private set; }
+        
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime? UpdatedAt { get; set; } =  DateTime.UtcNow;
+    public DateTime? isDeactivated { get; set; } = DateTime.UtcNow;
+    
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Application\DTOs\Products\SummaryProductDto.cs =====
+namespace InventoryApplication.Application.DTOs.Products;
+
+public class SummaryProductDto
+{
+    public int ProductId { get; set; }
+    public string ProductName { get; set; }
+    
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Application\DTOs\Products\UpdateProductDto.cs =====
+namespace InventoryApplication.Application.DTOs.Products;
+
+public class UpdateProductDto
+{
+    public int Id { get; set; }
+    public required string ProductName { get; set; }
+    public string? Description { get; set; }
+    public decimal PurchasePrice { get; set; }
+    public decimal SalePrice { get; set; }
+    public int CategoryId { get; set; }
+    public int SubCategoryId { get; set; }
+    public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Application\DTOs\SubCategories\CreateSubCategoryDto.cs =====
+namespace InventoryApplication.Application.DTOs.SubCategories;
+
+public class CreateSubCategoryDto
+{
+    public required string Name { get; set; }
+    public string? Description { get; set; }
+    public int CategoryId { get; set; }
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Application\DTOs\SubCategories\SubCategoryDto.cs =====
+using InventoryApplication.Application.DTOs.Categories;
+
+namespace InventoryApplication.Application.DTOs.SubCategories;
+
+public class SubCategoryDto
+{
+    public int Id { get; set; }
+    public required string Name { get; set; }
+    public string? Description { get; set; }
+
+    public CategorySummaryDto Category { get; set; }
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Application\DTOs\SubCategories\SubCategorySummaryDto.cs =====
+namespace InventoryApplication.Application.DTOs.SubCategories;
+
+public class SubCategorySummaryDto
+{
+    public int Id { get; set; }
+    public required string Name { get; set; }
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Application\DTOs\SubCategories\UpdateSubCategoryDto.cs =====
+namespace InventoryApplication.Application.DTOs.SubCategories;
+
+public class UpdateSubCategoryDto
+{
+    public int Id { get; set; }
+    public required string Name { get; set; }
+    public string? Description { get; set; }
+    public int CategoryId { get; set; }
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Application\Interfaces\Products\IProductService.cs =====
+using InventoryApplication.Application.DTOs.Products;
+
+namespace InventoryApplication.Application.Interfaces.Products;
+
+public interface IProductService
+{
+    Task<ProductDto> CreateAsync(CreateProductDto dto);
+
+    Task<List<ProductDto>> GetAllAsync(bool? isActive = null);
+
+    Task<ProductDto?> GetByIdAsync(int productId);
+
+    Task<ProductDto> UpdateAsync(UpdateProductDto dto);
+
+    Task DeactivateAsync(int productId);
+
+    Task ActivateAsync(int productId);
+
+    Task DeleteAsync(int productId);
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Application\Services\Categories\CategoryService.cs =====
+namespace InventoryApplication.Application.Services.Products;
+
+public class CategoryService
+{
+    
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Application\Services\Products\ProductService.cs =====
+namespace InventoryApplication.Application.Services.Categories;
+
+public class ProductService
+{
+    
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Application\Services\SubCategories\SubCategoryService.cs =====
+namespace InventoryApplication.Application.Services.SubCategories;
+
+public class SubCategoryService
+{
+    
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Application\Validators\Categories\CreateCategoryValidator.cs =====
+using FluentValidation;
+using InventoryApplication.Application.DTOs.Categories;
+
+
+namespace InventoryApplication.Application.Validators.Categories;
+
+public class CreateCategoryValidator : AbstractValidator<CreateCategoryDto>
+{
+    public CreateCategoryValidator()
+    {
+        RuleFor(x => x.Name)
+            .NotEmpty().WithMessage("Ù†Ø§Ù… Ø¯Ø³ØªÙ‡â€ŒØ¨Ù†Ø¯ÛŒ Ø§Ù„Ø²Ø§Ù…ÛŒ Ø§Ø³Øª")
+            .MaximumLength(150).WithMessage("Ù†Ø§Ù… Ù†Ø¨Ø§ÛŒØ¯ Ø¨ÛŒØ´ØªØ± Ø§Ø² 150 Ú©Ø§Ø±Ø§Ú©ØªØ± Ø¨Ø§Ø´Ø¯");
+
+        RuleFor(x => x.Description)
+            .MaximumLength(1000).WithMessage("ØªÙˆØ¶ÛŒØ­Ø§Øª Ù†Ø¨Ø§ÛŒØ¯ Ø¨ÛŒØ´ØªØ± Ø§Ø² 1000 Ú©Ø§Ø±Ø§Ú©ØªØ± Ø¨Ø§Ø´Ø¯");
+        
+    }
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Application\Validators\Categories\UpdateCategoryValidator.cs =====
+using FluentValidation;
+using InventoryApplication.Application.DTOs.Categories;
+
+namespace InventoryApplication.Application.Validators.Categories;
+
+public class UpdateCategoryValidator : AbstractValidator<UpdateCategoryDto>
+{
+    public UpdateCategoryValidator() {
+        RuleFor(x => x.Name).NotEmpty().WithMessage("Name is required")
+            .NotNull().WithMessage("Ù†Ø§Ù… Ù†Ø¨Ø§ÛŒØ¯ Ø®Ø§Ù„ÛŒ Ø¨Ø§Ø´Ø¯");
+        RuleFor(p => p.Name).MaximumLength(150).WithMessage("Ù†Ø¨Ø§ÛŒØ¯ Ø¨ÛŒØ´ØªØ± Ø§Ø² 150 Ú©Ø§Ø±Ú©ØªØ± Ø¨Ø§Ø´Ø¯");
+        RuleFor(x => x.Description).MaximumLength(1000).WithMessage("ØªÙˆØ¶ÛŒØ­Ø§Øª Ù†Ø¨Ø§ÛŒØ¯ Ø¨ÛŒØ´ØªØ± Ø§Ø² 1000 Ú©Ø§Ø±Ú©ØªØ± Ø¨Ø§Ø´Ø¯");
+    }
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Application\Validators\Products\CreateProductValidator.cs =====
+using FluentValidation;
+using InventoryApplication.Application.DTOs.Products;
+
+namespace InventoryApplication.Application.Validators.Products;
+
+public class CreateProductValidator : AbstractValidator<CreateProductDto>
+{
+    public CreateProductValidator()
+    {
+        RuleFor(p => p.ProductName)
+            .NotEmpty()
+            .WithMessage("Ù†Ø§Ù… Ù…Ø­ØµÙˆÙ„ Ø§Ø¬Ø¨Ø§Ø±ÛŒ Ø§Ø³Øª")
+            .MaximumLength(200)
+            .WithMessage("Ù†Ø§Ù… Ù…Ø­ØµÙˆÙ„ Ø­Ø¯Ø§Ú©Ø«Ø± Ø¨Ø§ÛŒØ¯ 200 Ú©Ø§Ø±Ø§Ú©ØªØ± Ø¨Ø§Ø´Ø¯");
+
+        RuleFor(p => p.Description)
+            .MaximumLength(1000)
+            .WithMessage("ØªÙˆØ¶ÛŒØ­Ø§Øª Ø­Ø¯Ø§Ú©Ø«Ø± Ù…ÛŒâ€ŒØªÙˆØ§Ù†Ø¯ 1000 Ú©Ø§Ø±Ø§Ú©ØªØ± Ø¨Ø§Ø´Ø¯");
+        
+        RuleFor(p => p.PurchasePrice)
+            .GreaterThan(0)
+            .WithMessage("Ù‚ÛŒÙ…Øª Ø®Ø±ÛŒØ¯ Ø¨Ø§ÛŒØ¯ Ø¨Ø²Ø±Ú¯â€ŒØªØ± Ø§Ø² ØµÙØ± Ø¨Ø§Ø´Ø¯");
+
+        RuleFor(p => p.SalePrice)
+            .GreaterThan(0)
+            .WithMessage("Ù‚ÛŒÙ…Øª ÙØ±ÙˆØ´ Ø¨Ø§ÛŒØ¯ Ø¨Ø²Ø±Ú¯â€ŒØªØ± Ø§Ø² ØµÙØ± Ø¨Ø§Ø´Ø¯");
+
+        RuleFor(p => p.Quantity)
+            .GreaterThanOrEqualTo(0)
+            .WithMessage("Ù…ÙˆØ¬ÙˆØ¯ÛŒ Ù†Ù…ÛŒâ€ŒØªÙˆØ§Ù†Ø¯ Ù…Ù†ÙÛŒ Ø¨Ø§Ø´Ø¯");
+    }
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Application\Validators\Products\UpdateProductValidator.cs =====
+using FluentValidation;
+using InventoryApplication.Application.DTOs.Products;
+namespace InventoryApplication.Application.Validators.Products;
+
+public class UpdateProductValidator : AbstractValidator<UpdateProductDto>
+{
+    public UpdateProductValidator()
+    {
+        RuleFor(p => p.ProductName)
+            .NotEmpty()
+            .WithMessage("Ù†Ø§Ù… Ù…Ø­ØµÙˆÙ„ Ø§Ø¬Ø¨Ø§Ø±ÛŒ Ø§Ø³Øª")
+            .MaximumLength(200)
+            .WithMessage("Ù†Ø§Ù… Ù…Ø­ØµÙˆÙ„ Ø­Ø¯Ø§Ú©Ø«Ø± Ø¨Ø§ÛŒØ¯ 200 Ú©Ø§Ø±Ø§Ú©ØªØ± Ø¨Ø§Ø´Ø¯");
+        RuleFor(p => p.Description)
+            .MaximumLength(1000)
+            .WithMessage("ØªÙˆØ¶ÛŒØ­Ø§Øª Ø­Ø¯Ø§Ú©Ø«Ø± Ù…ÛŒâ€ŒØªÙˆØ§Ù†Ø¯ 1000 Ú©Ø§Ø±Ø§Ú©ØªØ± Ø¨Ø§Ø´Ø¯");
+        RuleFor(p => p.PurchasePrice)
+            .GreaterThan(0)
+            .WithMessage("Ù‚ÛŒÙ…Øª Ø®Ø±ÛŒØ¯ Ø¨Ø§ÛŒØ¯ Ø¨Ø²Ø±Ú¯â€ŒØªØ± Ø§Ø² ØµÙØ± Ø¨Ø§Ø´Ø¯");
+        RuleFor(p => p.SalePrice)
+            .GreaterThan(0)
+            .WithMessage("Ù‚ÛŒÙ…Øª ÙØ±ÙˆØ´ Ø¨Ø§ÛŒØ¯ Ø¨Ø²Ø±Ú¯â€ŒØªØ± Ø§Ø² ØµÙØ± Ø¨Ø§Ø´Ø¯");
+    }
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Application\Validators\SubCategories\CreateSubCategoryValidator.cs =====
+using FluentValidation;
+using InventoryApplication.Application.DTOs.SubCategories;
+namespace InventoryApplication.Application.Validators.SubCategories;
+
+public class CreateSubCategoryValidator :  AbstractValidator<CreateSubCategoryDto>
+{
+    public CreateSubCategoryValidator()
+    {
+        RuleFor(x => x.Name)
+            .NotEmpty().WithMessage("Ù†Ø§Ù… Ø¯Ø³ØªÙ‡â€ŒØ¨Ù†Ø¯ÛŒ Ø§Ù„Ø²Ø§Ù…ÛŒ Ø§Ø³Øª")
+            .MaximumLength(150).WithMessage("Ù†Ø§Ù… Ù†Ø¨Ø§ÛŒØ¯ Ø¨ÛŒØ´ØªØ± Ø§Ø² 150 Ú©Ø§Ø±Ø§Ú©ØªØ± Ø¨Ø§Ø´Ø¯");
+        RuleFor(x => x.Description)
+            .MaximumLength(1000).WithMessage("ØªÙˆØ¶ÛŒØ­Ø§Øª Ù†Ø¨Ø§ÛŒØ¯ Ø¨ÛŒØ´ØªØ± Ø§Ø² 1000 Ú©Ø§Ø±Ø§Ú©ØªØ± Ø¨Ø§Ø´Ø¯");
+        RuleFor(x => x.CategoryId)
+            .GreaterThan(0)
+            .WithMessage("Ø§Ù†ØªØ®Ø§Ø¨ Ø¯Ø³ØªÙ‡â€ŒØ¨Ù†Ø¯ÛŒ Ø§Ù„Ø²Ø§Ù…ÛŒ Ø§Ø³Øª");
+    }
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Application\Validators\SubCategories\UpdateSubCategoryValidator.cs =====
+using FluentValidation;
+using InventoryApplication.Application.DTOs.SubCategories;
+namespace InventoryApplication.Application.Validators.SubCategories;
+
+public class UpdateSubCategoryValidator : AbstractValidator<UpdateSubCategoryDto>
+{
+    public  UpdateSubCategoryValidator()
+    {
+        RuleFor(x => x.Name).NotEmpty().WithMessage("Name is required");
+        RuleFor(x => x.CategoryId)
+            .GreaterThan(0)
+            .WithMessage("Ø§Ù†ØªØ®Ø§Ø¨ Ø¯Ø³ØªÙ‡â€ŒØ¨Ù†Ø¯ÛŒ Ø§Ù„Ø²Ø§Ù…ÛŒ Ø§Ø³Øª");
+        RuleFor(p => p.Name).MaximumLength(150).WithMessage("Ù†Ø¨Ø§ÛŒØ¯ Ø¨ÛŒØ´ØªØ± Ø§Ø² 150 Ú©Ø§Ø±Ú©ØªØ± Ø¨Ø§Ø´Ø¯");
+        RuleFor(x => x.Description).MaximumLength(1000).WithMessage("ØªÙˆØ¶ÛŒØ­Ø§Øª Ù†Ø¨Ø§ÛŒØ¯ Ø¨ÛŒØ´ØªØ± Ø§Ø² 1000 Ú©Ø§Ø±Ú©ØªØ± Ø¨Ø§Ø´Ø¯");
+    }
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Application\DependencyInjection.cs =====
+using FluentValidation;
+using Microsoft.Extensions.DependencyInjection;
+using InventoryApplication.Application.Validators.Products;
+namespace InventoryApplication.Application;
+//ÙÙ‚Ø· Ú†ÙˆÙ† creat Ø±Ùˆ ØªØ¹Ø±ÛŒÙ Ù…ÛŒÚ©Ù†ÛŒÙ… Ù…Ø§Ø¨Ù‚ÛŒ Ø±Ùˆ Ø®ÙˆØ¯Ø´ Ù¾ÛŒØ¯Ø§ Ù…ÛŒÚ©Ù†Ù‡. Ø§ÛŒÙ† Ø¨Ù‡ Ø¹Ù†ÙˆØ§Ù† Marker Ø¹Ù…Ù„ Ù…ÛŒÚ©Ù†Ù‡
+public static class DependencyInjection
+{
+    public static IServiceCollection AddApplication(this IServiceCollection services)
+    {
+    
+        services.AddValidatorsFromAssemblyContaining<CreateProductValidator>();
+        return services;
+    }
+    
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Domain\Entities\Category.cs =====
+namespace InventoryApplication.Domain.Entities
+{
+    public class Category
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string? Description { get; set; }
+
+        // Navigation Properties
+        public ICollection<Product>  Products { get; set; } = new List<Product>();
+        public ICollection<SubCategory> SubCategories { get; set; } = new List<SubCategory>();
+    }
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Domain\Entities\Customer.cs =====
+namespace InventoryApplication.Domain.Entities;
+
+public class Customer
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string? CompanyName { get; set; }
+    public string? ContactName { get; set; }
+    public string? Address { get; set; }
+    
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Domain\Entities\Product.cs =====
+namespace InventoryApplication.Domain.Entities
+{
+    public class Product
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Sku { get; set; }
+        public string? Description { get; set; }
+        public decimal PurchPrice { get; set; }
+        public decimal SalePrice { get; set; }
+        public decimal Quantity { get; set; }
+        public bool IsActive { get; set; } = true;
+        public bool IsDeleted { get; set; } = false;
+        public DateTime? DeletedAt { get;private set; }
+        
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime? UpdatedAt { get; set; } =  DateTime.UtcNow;
+        public DateTime? isDeactivated { get; set; } = DateTime.UtcNow;
+
+        // Foreign Key به Category (هر محصول فقط یک Category)
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
+        // به ساب کتگوری 
+        public int SubCategoryId { get; set; }
+        public SubCategory SubCategory { get; set; }
+        // تاریخچه قیمت
+        public ICollection<ProductPriceHistory> ProductPriceHistories { get; set; } = new List<ProductPriceHistory>();
+    }
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Domain\Entities\ProductPriceHistory.cs =====
+namespace InventoryApplication.Domain.Entities;
+
+public class ProductPriceHistory
+{
+    public int Id { get; set; }
+    public decimal SalePrice { get; set; }
+    public DateTime ChangedAt { get; set; } =  DateTime.UtcNow;
+    public string? Description { get; set; }
+    public decimal PurchPrice { get; set; } 
+    //Ø±Ø§Ø¨Ø·Ù‡ Ø¨Ø§ product
+    public int ProductId { get; set; }
+    public Product Product { get; set; }  
+
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Domain\Entities\Sale.cs =====
+namespace InventoryApplication.Domain.Entities;
+
+public class Sale
+{
+    
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Domain\Entities\SaleItem.cs =====
+namespace InventoryApplication.Domain.Entities;
+
+public class SaleItem
+{
+    
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Domain\Entities\StockMovment.cs =====
+namespace InventoryApplication.Domain.Entities;
+
+public class StockMovment
+{
+    
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Domain\Entities\SubCategory.cs =====
+namespace InventoryApplication.Domain.Entities
+{
+    public class SubCategory
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string? Description { get; set; }
+
+        // Foreign Key Ø¨Ù‡ Category
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
+
+        // ONE TO MANY
+        public ICollection<Product> Products { get; set; } = new List<Product>();
+    }
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Domain\Enum\Measurement.cs =====
+namespace InventoryApplication.Domain.Enum;
+public enum UnitType { Meter = 1, Kilogram = 2, Roll = 3, Piece = 4 }
+
+public static class UnitInfo
+{
+    public static string GetName(this UnitType unit) => unit switch
+    {
+        UnitType.Meter => "Ù…ØªØ±",
+        UnitType.Kilogram => "Ú©ÛŒÙ„ÙˆÚ¯Ø±Ù…",
+        UnitType.Roll => "Ø±ÙˆÙ„",
+        UnitType.Piece => "Ø¹Ø¯Ø¯",
+        _ => unit.ToString()
+    };
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Domain\Enum\MovmentType.cs =====
+namespace InventoryApplication.Domain.Enum;
+
+public enum MovmentType
+{
+    
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Domain\Enum\SaleStatus.cs =====
+namespace InventoryApplication.Domain.Enum;
+
+public enum SaleStatus
+{
+    
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Infrastructure\Data\AppDbContext.cs =====
+
+using Microsoft.EntityFrameworkCore;
+using InventoryApplication.Domain.Entities;
+
+namespace InventoryApplication.Infrastructure;
+
+public class AppDbContext : DbContext
+{
+    public DbSet<Product> Products { get; set; }
+    public DbSet<Category> Categories { get; set; }
+    public DbSet<SubCategory> SubCategories { get; set; }
+    public DbSet<ProductPriceHistory> ProductPriceHistories { get; set; }
+
+    public AppDbContext(DbContextOptions<AppDbContext> options)
+        : base(options)
+    {
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        // Product
+        modelBuilder.Entity<Product>(entity =>
+        {
+            entity.HasKey(p => p.Id);
+
+            entity.Property(p => p.Name)
+                .IsRequired()
+                .HasMaxLength(200);
+            entity.Property(P => P.Sku).IsRequired().HasMaxLength(50);
+
+
+            entity.HasIndex(p => p.Sku)
+                .IsUnique();
+                
+                
+
+            entity.Property(p => p.Description)
+                .HasMaxLength(1000);
+
+            entity.Property(p => p.PurchPrice)
+                .HasPrecision(18, 2);
+
+            entity.Property(p => p.SalePrice)
+                .HasPrecision(18, 2);
+
+            entity.Property(p => p.Quantity)
+                .HasPrecision(18, 2);
+
+            // Product -> Category (Required)
+            entity.HasOne(p => p.Category)
+                .WithMany(c => c.Products)
+                .HasForeignKey(p => p.CategoryId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Product -> SubCategory (Required)
+            entity.HasOne(p => p.SubCategory)
+                .WithMany(s => s.Products)
+                .HasForeignKey(p => p.SubCategoryId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Product -> ProductPriceHistory
+            entity.HasMany(p => p.ProductPriceHistories)
+                .WithOne(h => h.Product)
+                .HasForeignKey(h => h.ProductId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
+        });
+
+
+        // Category
+        modelBuilder.Entity<Category>(entity =>
+        {
+            entity.HasKey(c => c.Id);
+
+            entity.Property(c => c.Name)
+                .IsRequired()
+                .HasMaxLength(150);
+
+            entity.Property(c => c.Description)
+                .HasMaxLength(1000);
+
+            entity.HasIndex(c => c.Name)
+                .IsUnique();
+        });
+
+
+        // SubCategory
+        modelBuilder.Entity<SubCategory>(entity =>
+        {
+            entity.HasKey(s => s.Id);
+
+            entity.Property(s => s.Name)
+                .IsRequired()
+                .HasMaxLength(150);
+
+            entity.Property(s => s.Description)
+                .HasMaxLength(1000);
+
+            entity.HasOne(s => s.Category)
+                .WithMany(c => c.SubCategories)
+                .HasForeignKey(s => s.CategoryId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
+
+            entity.HasIndex(s => new { s.CategoryId, s.Name })
+                .IsUnique();
+        });
+
+
+        // ProductPriceHistory
+        modelBuilder.Entity<ProductPriceHistory>(entity =>
+        {
+            entity.HasKey(h => h.Id);
+
+            entity.Property(h => h.PurchPrice)
+                .HasPrecision(18, 2);
+
+            entity.Property(h => h.SalePrice)
+                .HasPrecision(18, 2);
+
+            entity.Property(h => h.Description)
+                .HasMaxLength(1000);
+
+            entity.HasOne(h => h.Product)
+                .WithMany(p => p.ProductPriceHistories)
+                .HasForeignKey(h => h.ProductId)
+                .IsRequired(false)
+                .OnDelete(DeleteBehavior.Restrict);
+        });
+    }
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Infrastructure\DependencyInjection.cs =====
+namespace InventoryApplication.Infrastructure;
+
+public class DependencyInjection
+{
+    
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Web\Error.cshtml.cs =====
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Diagnostics;
+
+namespace InventoryApplication.Pages
+{
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    [IgnoreAntiforgeryToken]
+    public class ErrorModel : PageModel
+    {
+        public string? RequestId { get; set; }
+
+        public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
+
+        public void OnGet()
+        {
+            RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
+        }
+    }
+
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Web\Index.cshtml.cs =====
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+
+namespace InventoryApplication.Pages
+{
+    public class IndexModel : PageModel
+    {
+        public void OnGet()
+        {
+
+        }
+    }
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Web\Privacy.cshtml.cs =====
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+
+namespace InventoryApplication.Pages
+{
+    public class PrivacyModel : PageModel
+    {
+        public void OnGet()
+        {
+        }
+    }
+
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\appsettings.json =====
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*"
+}
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\InventoryApplication.csproj =====
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Application\DependencyInjections\" />
+    <Folder Include="Application\Exeptions\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="12.2.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.10" />
+    <PackageReference Include="Npgsql" Version="10.0.3" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.3" />
+  </ItemGroup>
+
+</Project>
+
+===== D:\.net training projects\InventoryApplication\InventoryApplication\Program.cs =====
+using InventoryApplication.Application;
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+builder.Services.AddRazorPages();
+builder.Services.AddApplication();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Error");
+}
+
+app.UseRouting();
+
+app.UseAuthorization();
+
+app.MapStaticAssets();
+app.MapRazorPages()
+   .WithStaticAssets();
+
+app.Run();
+
