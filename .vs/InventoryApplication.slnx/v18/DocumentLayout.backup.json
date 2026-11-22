@@ -3,6 +3,22 @@
   "WorkspaceRootPath": "D:\\.net training projects\\InventoryApplication\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{90775B8F-D608-DE6C-2A5A-4F98B7CB6ACE}|InventoryApplication\\InventoryApplication.csproj|d:\\.net training projects\\inventoryapplication\\inventoryapplication\\application\\interfaces\\products\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90775B8F-D608-DE6C-2A5A-4F98B7CB6ACE}|InventoryApplication\\InventoryApplication.csproj|solutionrelative:inventoryapplication\\application\\interfaces\\products\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90775B8F-D608-DE6C-2A5A-4F98B7CB6ACE}|InventoryApplication\\InventoryApplication.csproj|d:\\.net training projects\\inventoryapplication\\inventoryapplication\\application\\dtos\\products\\summaryproductdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90775B8F-D608-DE6C-2A5A-4F98B7CB6ACE}|InventoryApplication\\InventoryApplication.csproj|solutionrelative:inventoryapplication\\application\\dtos\\products\\summaryproductdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90775B8F-D608-DE6C-2A5A-4F98B7CB6ACE}|InventoryApplication\\InventoryApplication.csproj|d:\\.net training projects\\inventoryapplication\\inventoryapplication\\application\\dtos\\products\\updateproductdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90775B8F-D608-DE6C-2A5A-4F98B7CB6ACE}|InventoryApplication\\InventoryApplication.csproj|solutionrelative:inventoryapplication\\application\\dtos\\products\\updateproductdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90775B8F-D608-DE6C-2A5A-4F98B7CB6ACE}|InventoryApplication\\InventoryApplication.csproj|d:\\.net training projects\\inventoryapplication\\inventoryapplication\\application\\dtos\\products\\productdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90775B8F-D608-DE6C-2A5A-4F98B7CB6ACE}|InventoryApplication\\InventoryApplication.csproj|solutionrelative:inventoryapplication\\application\\dtos\\products\\productdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{90775B8F-D608-DE6C-2A5A-4F98B7CB6ACE}|InventoryApplication\\InventoryApplication.csproj|d:\\.net training projects\\inventoryapplication\\inventoryapplication\\domain\\entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{90775B8F-D608-DE6C-2A5A-4F98B7CB6ACE}|InventoryApplication\\InventoryApplication.csproj|solutionrelative:inventoryapplication\\domain\\entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -56,11 +72,63 @@
         },
         {
           "DockedHeight": 25,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
+              "Title": "IProductService.cs",
+              "DocumentMoniker": "D:\\.net training projects\\InventoryApplication\\InventoryApplication\\Application\\Interfaces\\Products\\IProductService.cs",
+              "RelativeDocumentMoniker": "InventoryApplication\\Application\\Interfaces\\Products\\IProductService.cs",
+              "ToolTip": "D:\\.net training projects\\InventoryApplication\\InventoryApplication\\Application\\Interfaces\\Products\\IProductService.cs*",
+              "RelativeToolTip": "InventoryApplication\\Application\\Interfaces\\Products\\IProductService.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-22T08:03:26.499Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ProductDto.cs",
+              "DocumentMoniker": "D:\\.net training projects\\InventoryApplication\\InventoryApplication\\Application\\DTOs\\Products\\ProductDto.cs",
+              "RelativeDocumentMoniker": "InventoryApplication\\Application\\DTOs\\Products\\ProductDto.cs",
+              "ToolTip": "D:\\.net training projects\\InventoryApplication\\InventoryApplication\\Application\\DTOs\\Products\\ProductDto.cs*",
+              "RelativeToolTip": "InventoryApplication\\Application\\DTOs\\Products\\ProductDto.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-22T08:03:19.497Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SummaryProductDto.cs",
+              "DocumentMoniker": "D:\\.net training projects\\InventoryApplication\\InventoryApplication\\Application\\DTOs\\Products\\SummaryProductDto.cs",
+              "RelativeDocumentMoniker": "InventoryApplication\\Application\\DTOs\\Products\\SummaryProductDto.cs",
+              "ToolTip": "D:\\.net training projects\\InventoryApplication\\InventoryApplication\\Application\\DTOs\\Products\\SummaryProductDto.cs",
+              "RelativeToolTip": "InventoryApplication\\Application\\DTOs\\Products\\SummaryProductDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-22T08:03:18.071Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UpdateProductDto.cs",
+              "DocumentMoniker": "D:\\.net training projects\\InventoryApplication\\InventoryApplication\\Application\\DTOs\\Products\\UpdateProductDto.cs",
+              "RelativeDocumentMoniker": "InventoryApplication\\Application\\DTOs\\Products\\UpdateProductDto.cs",
+              "ToolTip": "D:\\.net training projects\\InventoryApplication\\InventoryApplication\\Application\\DTOs\\Products\\UpdateProductDto.cs",
+              "RelativeToolTip": "InventoryApplication\\Application\\DTOs\\Products\\UpdateProductDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-22T08:03:04.653Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "IProductService.cs",
               "DocumentMoniker": "D:\\.net training projects\\InventoryApplication\\InventoryApplication\\Application\\Products\\IProductService.cs",
               "RelativeDocumentMoniker": "InventoryApplication\\Application\\Products\\IProductService.cs",
@@ -73,7 +141,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "UpdateProductValidator.cs",
               "DocumentMoniker": "D:\\.net training projects\\InventoryApplication\\InventoryApplication\\Application\\Products\\Validators\\UpdateProductValidator.cs",
               "RelativeDocumentMoniker": "InventoryApplication\\Application\\Products\\Validators\\UpdateProductValidator.cs",
@@ -86,7 +154,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "UpdateProductDto.cs",
               "DocumentMoniker": "D:\\.net training projects\\InventoryApplication\\InventoryApplication\\Application\\Products\\DTOs\\UpdateProductDto.cs",
               "RelativeDocumentMoniker": "InventoryApplication\\Application\\Products\\DTOs\\UpdateProductDto.cs",
@@ -99,20 +167,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "Product.cs",
               "DocumentMoniker": "D:\\.net training projects\\InventoryApplication\\InventoryApplication\\Domain\\Entities\\Product.cs",
               "RelativeDocumentMoniker": "InventoryApplication\\Domain\\Entities\\Product.cs",
               "ToolTip": "D:\\.net training projects\\InventoryApplication\\InventoryApplication\\Domain\\Entities\\Product.cs",
               "RelativeToolTip": "InventoryApplication\\Domain\\Entities\\Product.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAcAAAAAAAAAAAA5wAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-11-22T07:58:45.479Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "ProductPriceHistory.cs",
               "DocumentMoniker": "D:\\.net training projects\\InventoryApplication\\InventoryApplication\\Domain\\Entities\\ProductPriceHistory.cs",
               "RelativeDocumentMoniker": "InventoryApplication\\Domain\\Entities\\ProductPriceHistory.cs",
@@ -125,7 +193,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "DependencyInjection.cs",
               "DocumentMoniker": "D:\\.net training projects\\InventoryApplication\\InventoryApplication\\Infrastructure\\DependencyInjection.cs",
               "RelativeDocumentMoniker": "InventoryApplication\\Infrastructure\\DependencyInjection.cs",
@@ -138,7 +206,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "Product.cs",
               "DocumentMoniker": "D:\\.net training projects\\InventoryApplication\\InventoryApplication\\Infrastructure\\Entities\\Product.cs",
               "RelativeDocumentMoniker": "InventoryApplication\\Infrastructure\\Entities\\Product.cs",
