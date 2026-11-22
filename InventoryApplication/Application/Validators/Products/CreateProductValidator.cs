@@ -16,7 +16,11 @@ public class CreateProductValidator : AbstractValidator<CreateProductDto>
         RuleFor(p => p.Description)
             .MaximumLength(1000)
             .WithMessage("توضیحات حداکثر می‌تواند 1000 کاراکتر باشد");
-        
+
+        RuleFor(p => p.SubCategoryId)
+            .GreaterThan(0)
+            .WithMessage("انتخاب زیردسته‌بندی الزامی است");
+
         RuleFor(p => p.PurchasePrice)
             .GreaterThan(0)
             .WithMessage("قیمت خرید باید بزرگ‌تر از صفر باشد");
