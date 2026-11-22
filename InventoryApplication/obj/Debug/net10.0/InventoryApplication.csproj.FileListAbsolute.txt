@@ -117,9 +117,7 @@ D:\.net training projects\InventoryApplication\InventoryApplication\bin\Debug\ne
 D:\.net training projects\InventoryApplication\InventoryApplication\bin\Debug\net10.0\FluentValidation.dll
 D:\.net training projects\InventoryApplication\InventoryApplication\bin\Debug\net10.0\FluentValidation.DependencyInjectionExtensions.dll
 D:\.net training projects\InventoryApplication\InventoryApplication\obj\Debug\net10.0\InventoryApplication.sourcelink.json
-D:\.net training projects\InventoryApplication\InventoryApplication\bin\Debug\net10.0\EFCore.dll
 D:\.net training projects\InventoryApplication\InventoryApplication\bin\Debug\net10.0\Humanizer.dll
-D:\.net training projects\InventoryApplication\InventoryApplication\bin\Debug\net10.0\LDBModel.dll
 D:\.net training projects\InventoryApplication\InventoryApplication\bin\Debug\net10.0\Microsoft.Build.Framework.dll
 D:\.net training projects\InventoryApplication\InventoryApplication\bin\Debug\net10.0\Microsoft.CodeAnalysis.dll
 D:\.net training projects\InventoryApplication\InventoryApplication\bin\Debug\net10.0\Microsoft.CodeAnalysis.CSharp.dll
@@ -131,10 +129,7 @@ D:\.net training projects\InventoryApplication\InventoryApplication\bin\Debug\ne
 D:\.net training projects\InventoryApplication\InventoryApplication\bin\Debug\net10.0\Microsoft.Extensions.DependencyModel.dll
 D:\.net training projects\InventoryApplication\InventoryApplication\bin\Debug\net10.0\Microsoft.VisualStudio.SolutionPersistence.dll
 D:\.net training projects\InventoryApplication\InventoryApplication\bin\Debug\net10.0\Mono.TextTemplating.dll
-D:\.net training projects\InventoryApplication\InventoryApplication\bin\Debug\net10.0\MySqlConnector.dll
 D:\.net training projects\InventoryApplication\InventoryApplication\bin\Debug\net10.0\Newtonsoft.Json.dll
-D:\.net training projects\InventoryApplication\InventoryApplication\bin\Debug\net10.0\Pomelo.EntityFrameworkCore.MySql.dll
-D:\.net training projects\InventoryApplication\InventoryApplication\bin\Debug\net10.0\Pomelo.JsonObject.dll
 D:\.net training projects\InventoryApplication\InventoryApplication\bin\Debug\net10.0\System.CodeDom.dll
 D:\.net training projects\InventoryApplication\InventoryApplication\bin\Debug\net10.0\System.Composition.AttributedModel.dll
 D:\.net training projects\InventoryApplication\InventoryApplication\bin\Debug\net10.0\System.Composition.Convention.dll
@@ -207,3 +202,5 @@ D:\.net training projects\InventoryApplication\InventoryApplication\bin\Debug\ne
 D:\.net training projects\InventoryApplication\InventoryApplication\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 D:\.net training projects\InventoryApplication\InventoryApplication\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 D:\.net training projects\InventoryApplication\InventoryApplication\bin\Debug\net10.0\dotnet-tools.json
+D:\.net training projects\InventoryApplication\InventoryApplication\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Relational.Design.dll
+D:\.net training projects\InventoryApplication\InventoryApplication\bin\Debug\net10.0\Npgsql.EntityFrameworkCore.PostgreSQL.Design.dll

@@ -8,29 +8,16 @@
     ".NETCoreApp,Version=v10.0": {
       "InventoryApplication/1.0.0": {
         "dependencies": {
-          "EFCore": "1.1.2",
           "FluentValidation": "12.2.0",
           "FluentValidation.DependencyInjectionExtensions": "12.2.0",
           "Microsoft.EntityFrameworkCore.Design": "10.0.10",
           "Microsoft.EntityFrameworkCore.Relational": "10.0.10",
           "Npgsql": "10.0.3",
-          "Npgsql.EntityFrameworkCore.PostgreSQL": "10.0.3"
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "10.0.3",
+          "Npgsql.EntityFrameworkCore.PostgreSQL.Design": "1.1.0"
         },
         "runtime": {
           "InventoryApplication.dll": {}
-        }
-      },
-      "EFCore/1.1.2": {
-        "dependencies": {
-          "LDBModel": "1.1.2",
-          "Pomelo.EntityFrameworkCore.MySql": "3.2.0"
-        },
-        "runtime": {
-          "lib/netcoreapp3.1/EFCore.dll": {
-            "assemblyVersion": "1.1.2.0",
-            "fileVersion": "1.1.2.0",
-            "localPath": "EFCore.dll"
-          }
         }
       },
       "FluentValidation/12.2.0": {
@@ -60,15 +47,6 @@
             "assemblyVersion": "2.14.0.0",
             "fileVersion": "2.14.1.48190",
             "localPath": "Humanizer.dll"
-          }
-        }
-      },
-      "LDBModel/1.1.2": {
-        "runtime": {
-          "lib/netcoreapp3.1/LDBModel.dll": {
-            "assemblyVersion": "1.1.2.0",
-            "fileVersion": "1.1.2.0",
-            "localPath": "LDBModel.dll"
           }
         }
       },
@@ -477,6 +455,18 @@
           }
         }
       },
+      "Microsoft.EntityFrameworkCore.Relational.Design/1.1.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "10.0.10"
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Relational.Design.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.0.21115",
+            "localPath": "Microsoft.EntityFrameworkCore.Relational.Design.dll"
+          }
+        }
+      },
       "Microsoft.Extensions.DependencyModel/10.0.10": {
         "runtime": {
           "lib/net10.0/Microsoft.Extensions.DependencyModel.dll": {
@@ -504,15 +494,6 @@
             "assemblyVersion": "3.0.0.0",
             "fileVersion": "3.0.0.1",
             "localPath": "Mono.TextTemplating.dll"
-          }
-        }
-      },
-      "MySqlConnector/0.69.9": {
-        "runtime": {
-          "lib/netcoreapp3.0/MySqlConnector.dll": {
-            "assemblyVersion": "0.69.9.0",
-            "fileVersion": "0.69.9.0",
-            "localPath": "MySqlConnector.dll"
           }
         }
       },
@@ -548,29 +529,19 @@
           }
         }
       },
-      "Pomelo.EntityFrameworkCore.MySql/3.2.0": {
+      "Npgsql.EntityFrameworkCore.PostgreSQL.Design/1.1.0": {
         "dependencies": {
+          "Microsoft.EntityFrameworkCore": "10.0.10",
           "Microsoft.EntityFrameworkCore.Relational": "10.0.10",
-          "MySqlConnector": "0.69.9",
-          "Pomelo.JsonObject": "2.2.1"
+          "Microsoft.EntityFrameworkCore.Relational.Design": "1.1.0",
+          "Npgsql": "10.0.3",
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "10.0.3"
         },
         "runtime": {
-          "lib/netstandard2.0/Pomelo.EntityFrameworkCore.MySql.dll": {
-            "assemblyVersion": "3.2.0.0",
-            "fileVersion": "3.2.0.0",
-            "localPath": "Pomelo.EntityFrameworkCore.MySql.dll"
-          }
-        }
-      },
-      "Pomelo.JsonObject/2.2.1": {
-        "dependencies": {
-          "Newtonsoft.Json": "13.0.3"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Pomelo.JsonObject.dll": {
-            "assemblyVersion": "2.2.1.0",
-            "fileVersion": "2.2.1.0",
-            "localPath": "Pomelo.JsonObject.dll"
+          "lib/netstandard1.3/Npgsql.EntityFrameworkCore.PostgreSQL.Design.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.0.0",
+            "localPath": "Npgsql.EntityFrameworkCore.PostgreSQL.Design.dll"
           }
         }
       },
@@ -656,13 +627,6 @@
       "serviceable": false,
       "sha512": ""
     },
-    "EFCore/1.1.2": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-R0b8SYW3Nn8dLkObTT/6yoTTG33Rn2XxkdPjn+Ej7uBibqpYBGRh1vzI4iQTnXbECTRGVlKeXPi+yIO6+ZXOzw==",
-      "path": "efcore/1.1.2",
-      "hashPath": "efcore.1.1.2.nupkg.sha512"
-    },
     "FluentValidation/12.2.0": {
       "type": "package",
       "serviceable": true,
@@ -683,13 +647,6 @@
       "sha512": "sha512-lQKvtaTDOXnoVJ20ibTuSIOf2i0uO0MPbDhd1jm238I+U/2ZnRENj0cktKZhtchBMtCUSRQ5v4xBCUbKNmyVMw==",
       "path": "humanizer.core/2.14.1",
       "hashPath": "humanizer.core.2.14.1.nupkg.sha512"
-    },
-    "LDBModel/1.1.2": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-NEMqbvPrETcIb51J3EL/2KxrTHDrmMS0DF0Goe9rEageuBMnWRIA/PqgAdc33UM5+HFTpUR2Gp9wvwiG1j6cdw==",
-      "path": "ldbmodel/1.1.2",
-      "hashPath": "ldbmodel.1.1.2.nupkg.sha512"
     },
     "Microsoft.Build.Framework/18.0.2": {
       "type": "package",
@@ -761,6 +718,13 @@
       "path": "microsoft.entityframeworkcore.relational/10.0.10",
       "hashPath": "microsoft.entityframeworkcore.relational.10.0.10.nupkg.sha512"
     },
+    "Microsoft.EntityFrameworkCore.Relational.Design/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-fF0sVEUkoGeJutGIzwnYsJJ9o2hxEGJRpSaCxPq63rhSwn0hBmCwf9ET4QqYqO9Pc6+ODXenAQa095CWzuM4Kg==",
+      "path": "microsoft.entityframeworkcore.relational.design/1.1.0",
+      "hashPath": "microsoft.entityframeworkcore.relational.design.1.1.0.nupkg.sha512"
+    },
     "Microsoft.Extensions.DependencyModel/10.0.10": {
       "type": "package",
       "serviceable": true,
@@ -781,13 +745,6 @@
       "sha512": "sha512-YqueG52R/Xej4VVbKuRIodjiAhV0HR/XVbLbNrJhCZnzjnSjgMJ/dCdV0akQQxavX6hp/LC6rqLGLcXeQYU7XA==",
       "path": "mono.texttemplating/3.0.0",
       "hashPath": "mono.texttemplating.3.0.0.nupkg.sha512"
-    },
-    "MySqlConnector/0.69.9": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-WpY4jWc5ee5kgKy3XAK9JMjRmn7+jLYCgDlYvFK+GTrzaiWDWoYLbtJge6l1tqo2teUAP3kzzsJpP8QwJM1W4Q==",
-      "path": "mysqlconnector/0.69.9",
-      "hashPath": "mysqlconnector.0.69.9.nupkg.sha512"
     },
     "Newtonsoft.Json/13.0.3": {
       "type": "package",
@@ -810,19 +767,12 @@
       "path": "npgsql.entityframeworkcore.postgresql/10.0.3",
       "hashPath": "npgsql.entityframeworkcore.postgresql.10.0.3.nupkg.sha512"
     },
-    "Pomelo.EntityFrameworkCore.MySql/3.2.0": {
+    "Npgsql.EntityFrameworkCore.PostgreSQL.Design/1.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-uiI4fLHIrkbvLkahiEnRa2ilD5aRQyjdSUEfZZqZAQmW56NATXBDS+zeZeg3jAdahqjnSDsCop7VjVBkEo5B+w==",
-      "path": "pomelo.entityframeworkcore.mysql/3.2.0",
-      "hashPath": "pomelo.entityframeworkcore.mysql.3.2.0.nupkg.sha512"
-    },
-    "Pomelo.JsonObject/2.2.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-VHPk3Yf7nDt+tZMC1M4oAoc3bgTYsOrap3VTjn//vd91b/nfquAbAeq1k0Lf7mPt8J7imLd9Pbzm50uB5euuZA==",
-      "path": "pomelo.jsonobject/2.2.1",
-      "hashPath": "pomelo.jsonobject.2.2.1.nupkg.sha512"
+      "sha512": "sha512-+taA6t8sRI0JTbyCZH0GobEtJYvU4aAGBf5/2/CutWHiYpO2nLfJ8SQSyWYMKakrwn1/NDM9VV85mGEAzBZ7LQ==",
+      "path": "npgsql.entityframeworkcore.postgresql.design/1.1.0",
+      "hashPath": "npgsql.entityframeworkcore.postgresql.design.1.1.0.nupkg.sha512"
     },
     "System.CodeDom/6.0.0": {
       "type": "package",
