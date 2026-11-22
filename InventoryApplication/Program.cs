@@ -1,4 +1,6 @@
 using InventoryApplication.Application;
+using InventoryApplication.Application.DependencyInjections;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

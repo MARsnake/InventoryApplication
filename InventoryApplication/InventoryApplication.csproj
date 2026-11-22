@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Application\DependencyInjections\" />
     <Folder Include="Application\Exeptions\" />
   </ItemGroup>
 

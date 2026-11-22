@@ -1,7 +1,7 @@
 using FluentValidation;
-using Microsoft.Extensions.DependencyInjection;
 using InventoryApplication.Application.Validators.Products;
-namespace InventoryApplication.Application;
+
+namespace InventoryApplication.Application.DependencyInjections;
 //فقط چون creat رو تعریف میکنیم مابقی رو خودش پیدا میکنه. این به عنوان Marker عمل میکنه
 public static class DependencyInjection
 {

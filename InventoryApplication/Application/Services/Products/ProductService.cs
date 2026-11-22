@@ -1,6 +1,6 @@
-namespace InventoryApplication.Application.Services.Categories;
+namespace InventoryApplication.Application.Services.Products;
 
 public class ProductService
 {
-    
+
 }

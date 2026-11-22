@@ -1,8 +1,7 @@
-
-using Microsoft.EntityFrameworkCore;
 using InventoryApplication.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
-namespace InventoryApplication.Infrastructure;
+namespace InventoryApplication.Infrastructure.Data;
 
 public class AppDbContext : DbContext
 {
@@ -20,7 +19,7 @@ public class AppDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
-        // Product
+        //Product
         modelBuilder.Entity<Product>(entity =>
         {
             entity.HasKey(p => p.Id);
@@ -65,7 +64,7 @@ public class AppDbContext : DbContext
         });
 
 
-        // Category
+        //Category
         modelBuilder.Entity<Category>(entity =>
         {
             entity.HasKey(c => c.Id);
@@ -104,26 +103,6 @@ public class AppDbContext : DbContext
                 .IsUnique();
         });
 
-
-        // ProductPriceHistory
-        modelBuilder.Entity<ProductPriceHistory>(entity =>
-        {
-            entity.HasKey(h => h.Id);
-
-            entity.Property(h => h.PurchPrice)
-                .HasPrecision(18, 2);
-
-            entity.Property(h => h.SalePrice)
-                .HasPrecision(18, 2);
-
-            entity.Property(h => h.Description)
-                .HasMaxLength(1000);
-
-            entity.HasOne(h => h.Product)
-                .WithMany(p => p.ProductPriceHistories)
-                .HasForeignKey(h => h.ProductId)
-                .IsRequired(false)
-                .OnDelete(DeleteBehavior.Restrict);
-        });
+        
     }
 }
