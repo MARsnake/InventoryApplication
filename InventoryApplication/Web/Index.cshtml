@@ -1,10 +1,380 @@
-﻿@page
+@page
+@using System.Globalization
+@using InventoryApplication.Domain.Enum
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "صفحه اصلی";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@if (!string.IsNullOrWhiteSpace(Model.SuccessMessage))
+{
+    <div class="alert alert-success alert-dismissible fade show">
+        @Model.SuccessMessage
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+@if (Model.ErrorMessages.Count > 0)
+{
+    <div class="alert alert-danger">
+        <ul class="mb-0">
+            @foreach (var err in Model.ErrorMessages)
+            {
+                <li>@err</li>
+            }
+        </ul>
+    </div>
+}
+
+<div class="row g-4 mb-4">
+    <!-- ==================== ۱. دسته‌بندی‌ها ==================== -->
+    <div class="col-lg-6">
+        <div class="card shadow-sm h-100">
+            <div class="card-header bg-primary text-white fw-bold">
+                ۱. دسته‌بندی‌ها (Category)
+            </div>
+            <div class="card-body">
+                <form method="post" asp-page-handler="CreateCategory" class="row g-2 mb-3">
+                    <div class="col-sm-5">
+                        <input name="Name" class="form-control form-control-sm" placeholder="نام دسته‌بندی *" />
+                    </div>
+                    <div class="col-sm-5">
+                        <input name="Description" class="form-control form-control-sm" placeholder="توضیحات (اختیاری)" />
+                    </div>
+                    <div class="col-sm-2 d-grid">
+                        <button type="submit" class="btn btn-sm btn-primary">افزودن</button>
+                    </div>
+                </form>
+
+                <div class="table-responsive">
+                    <table class="table table-sm table-bordered align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>نام</th>
+                                <th>توضیحات</th>
+                                <th>زیردسته‌ها</th>
+                                <th style="width: 130px;">عملیات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.Categories.Count == 0)
+                            {
+                                <tr>
+                                    <td colspan="4" class="text-center text-muted py-3">هنوز دسته‌بندی‌ای ثبت نشده است.</td>
+                                </tr>
+                            }
+                            @foreach (var cat in Model.Categories)
+                            {
+                                <tr>
+                                    <td class="fw-semibold">@cat.Name</td>
+                                    <td class="text-muted small">@(cat.Description ?? "-")</td>
+                                    <td><span class="badge bg-secondary">@cat.SubCategories.Count</span></td>
+                                    <td>
+                                        <div class="d-flex gap-1">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary"
+                                                    data-bs-toggle="collapse" data-bs-target="#edit-cat-@cat.Id">
+                                                ویرایش
+                                            </button>
+                                            <form method="post" asp-page-handler="DeleteCategory" class="d-inline">
+                                                <input type="hidden" name="id" value="@cat.Id" />
+                                                <button type="submit" class="btn btn-sm btn-outline-danger"
+                                                        onclick="return confirm('حذف شود؟');">
+                                                    حذف
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="collapse bg-light" id="edit-cat-@cat.Id">
+                                    <td colspan="4">
+                                        <form method="post" asp-page-handler="UpdateCategory" class="row g-2 p-1">
+                                            <input type="hidden" name="Id" value="@cat.Id" />
+                                            <div class="col-sm-5">
+                                                <input name="Name" value="@cat.Name" class="form-control form-control-sm" placeholder="نام" />
+                                            </div>
+                                            <div class="col-sm-5">
+                                                <input name="Description" value="@cat.Description" class="form-control form-control-sm" placeholder="توضیحات" />
+                                            </div>
+                                            <div class="col-sm-2 d-grid">
+                                                <button type="submit" class="btn btn-sm btn-success">ذخیره</button>
+                                            </div>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== ۲. زیردسته‌بندی‌ها ==================== -->
+    <div class="col-lg-6">
+        <div class="card shadow-sm h-100">
+            <div class="card-header bg-dark text-white fw-bold">
+                ۲. زیردسته‌بندی‌ها (SubCategory)
+            </div>
+            <div class="card-body">
+                <form method="post" asp-page-handler="CreateSubCategory" class="row g-2 mb-3">
+                    <div class="col-sm-4">
+                        <select name="CategoryId" class="form-select form-select-sm">
+                            <option value="0">-- دسته‌بندی * --</option>
+                            @foreach (var cat in Model.Categories)
+                            {
+                                <option value="@cat.Id">@cat.Name</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-sm-3">
+                        <input name="Name" class="form-control form-control-sm" placeholder="نام زیردسته *" />
+                    </div>
+                    <div class="col-sm-3">
+                        <input name="Description" class="form-control form-control-sm" placeholder="توضیحات" />
+                    </div>
+                    <div class="col-sm-2 d-grid">
+                        <button type="submit" class="btn btn-sm btn-dark">افزودن</button>
+                    </div>
+                </form>
+
+                <div class="table-responsive">
+                    <table class="table table-sm table-bordered align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>نام زیردسته</th>
+                                <th>دسته‌بندی مادر</th>
+                                <th>توضیحات</th>
+                                <th style="width: 130px;">عملیات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.SubCategories.Count == 0)
+                            {
+                                <tr>
+                                    <td colspan="4" class="text-center text-muted py-3">هنوز زیردسته‌بندی‌ای ثبت نشده است.</td>
+                                </tr>
+                            }
+                            @foreach (var sub in Model.SubCategories)
+                            {
+                                <tr>
+                                    <td class="fw-semibold">@sub.Name</td>
+                                    <td><span class="badge bg-info text-dark">@sub.Category.Name</span></td>
+                                    <td class="text-muted small">@(sub.Description ?? "-")</td>
+                                    <td>
+                                        <div class="d-flex gap-1">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary"
+                                                    data-bs-toggle="collapse" data-bs-target="#edit-sub-@sub.Id">
+                                                ویرایش
+                                            </button>
+                                            <form method="post" asp-page-handler="DeleteSubCategory" class="d-inline">
+                                                <input type="hidden" name="id" value="@sub.Id" />
+                                                <button type="submit" class="btn btn-sm btn-outline-danger"
+                                                        onclick="return confirm('حذف شود؟');">
+                                                    حذف
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="collapse bg-light" id="edit-sub-@sub.Id">
+                                    <td colspan="4">
+                                        <form method="post" asp-page-handler="UpdateSubCategory" class="row g-2 p-1">
+                                            <input type="hidden" name="Id" value="@sub.Id" />
+                                            <div class="col-sm-4">
+                                                <select name="CategoryId" class="form-select form-select-sm">
+                                                    @foreach (var cat in Model.Categories)
+                                                    {
+                                                        <option value="@cat.Id" selected="@(cat.Id == sub.Category.Id)">@cat.Name</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <input name="Name" value="@sub.Name" class="form-control form-control-sm" placeholder="نام" />
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <input name="Description" value="@sub.Description" class="form-control form-control-sm" placeholder="توضیحات" />
+                                            </div>
+                                            <div class="col-sm-2 d-grid">
+                                                <button type="submit" class="btn btn-sm btn-success">ذخیره</button>
+                                            </div>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== ۳. کالاها ==================== -->
+<div class="card shadow-sm">
+    <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+        <span class="fw-bold">۳. کالاها (Product)</span>
+        <div class="btn-group btn-group-sm">
+            <a asp-page="/Index"
+               class="btn @(Model.IsActiveFilter == null ? "btn-light fw-bold" : "btn-outline-light")">همه</a>
+            <a asp-page="/Index" asp-route-isActive="true"
+               class="btn @(Model.IsActiveFilter == true ? "btn-light fw-bold" : "btn-outline-light")">فعال</a>
+            <a asp-page="/Index" asp-route-isActive="false"
+               class="btn @(Model.IsActiveFilter == false ? "btn-light fw-bold" : "btn-outline-light")">غیرفعال</a>
+        </div>
+    </div>
+    <div class="card-body">
+        <form method="post" asp-page-handler="CreateProduct" class="row g-2 mb-3">
+            <div class="col-md-2">
+                <input name="ProductName" class="form-control form-control-sm" placeholder="نام کالا *" />
+            </div>
+            <div class="col-md-2">
+                <select name="SubCategoryId" class="form-select form-select-sm">
+                    <option value="0">-- زیردسته‌بندی * --</option>
+                    @foreach (var sub in Model.SubCategories)
+                    {
+                        <option value="@sub.Id">@sub.Category.Name / @sub.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-2">
+                <input name="PurchasePrice" type="number" step="0.01" class="form-control form-control-sm" placeholder="قیمت خرید *" />
+            </div>
+            <div class="col-md-2">
+                <input name="SalePrice" type="number" step="0.01" class="form-control form-control-sm" placeholder="قیمت فروش *" />
+            </div>
+            <div class="col-md-1">
+                <input name="Quantity" type="number" step="0.01" value="0" class="form-control form-control-sm" placeholder="موجودی" title="موجودی اولیه" />
+            </div>
+            <div class="col-md-1">
+                <select name="Unit" class="form-select form-select-sm">
+                    @foreach (var unit in Enum.GetValues<UnitType>())
+                    {
+                        <option value="@unit" selected="@(unit == UnitType.Piece)">@unit.GetName()</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-2">
+                <div class="input-group input-group-sm">
+                    <input name="Description" class="form-control" placeholder="توضیحات" />
+                    <button type="submit" class="btn btn-success">ثبت کالا</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="table-responsive">
+            <table class="table table-sm table-bordered align-middle mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th>کد (SKU)</th>
+                        <th>نام کالا</th>
+                        <th>دسته / زیردسته</th>
+                        <th>قیمت خرید</th>
+                        <th>قیمت فروش</th>
+                        <th>موجودی</th>
+                        <th>وضعیت</th>
+                        <th style="width: 210px;">عملیات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Products.Count == 0)
+                    {
+                        <tr>
+                            <td colspan="8" class="text-center text-muted py-3">هیچ کالایی یافت نشد.</td>
+                        </tr>
+                    }
+                    @foreach (var p in Model.Products)
+                    {
+                        <tr class="@(p.IsActive ? "" : "table-secondary text-muted")">
+                            <td><code>@p.Sku</code></td>
+                            <td>
+                                <div class="fw-semibold">@p.Name</div>
+                                @if (!string.IsNullOrWhiteSpace(p.Description))
+                                {
+                                    <div class="small text-muted">@p.Description</div>
+                                }
+                            </td>
+                            <td class="small">@p.CategoryName / @p.SubCategoryName</td>
+                            <td>@p.PurchPrice.ToString("N0")</td>
+                            <td>@p.SalePrice.ToString("N0")</td>
+                            <td>@p.Quantity @p.Unit.GetName()</td>
+                            <td>
+                                @if (p.IsActive)
+                                {
+                                    <span class="badge bg-success">فعال</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary">غیرفعال</span>
+                                }
+                            </td>
+                            <td>
+                                <div class="d-flex gap-1">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                                            data-bs-toggle="collapse" data-bs-target="#edit-prd-@p.Id">
+                                        ویرایش
+                                    </button>
+                                    <form method="post" asp-page-handler="ToggleProduct" class="d-inline">
+                                        <input type="hidden" name="id" value="@p.Id" />
+                                        <input type="hidden" name="activate" value="@((!p.IsActive).ToString().ToLowerInvariant())" />
+                                        <button type="submit" class="btn btn-sm btn-outline-warning text-dark">
+                                            @(p.IsActive ? "غیرفعال" : "فعال")
+                                        </button>
+                                    </form>
+                                    <form method="post" asp-page-handler="DeleteProduct" class="d-inline">
+                                        <input type="hidden" name="id" value="@p.Id" />
+                                        <button type="submit" class="btn btn-sm btn-outline-danger"
+                                                onclick="return confirm('کالا و تاریخچه قیمتش حذف شود؟');">
+                                            حذف
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="collapse bg-light" id="edit-prd-@p.Id">
+                            <td colspan="8">
+                                <form method="post" asp-page-handler="UpdateProduct" class="row g-2 p-1 align-items-center">
+                                    <input type="hidden" name="Id" value="@p.Id" />
+                                    <div class="col-md-2">
+                                        <input name="ProductName" value="@p.Name" class="form-control form-control-sm" placeholder="نام کالا" />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <select name="SubCategoryId" class="form-select form-select-sm">
+                                            @foreach (var sub in Model.SubCategories)
+                                            {
+                                                <option value="@sub.Id" selected="@(sub.Id == p.SubCategoryId)">@sub.Category.Name / @sub.Name</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input name="PurchasePrice" type="number" step="0.01"
+                                               value="@p.PurchPrice.ToString(CultureInfo.InvariantCulture)"
+                                               class="form-control form-control-sm" placeholder="قیمت خرید" />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input name="SalePrice" type="number" step="0.01"
+                                               value="@p.SalePrice.ToString(CultureInfo.InvariantCulture)"
+                                               class="form-control form-control-sm" placeholder="قیمت فروش" />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <select name="Unit" class="form-select form-select-sm">
+                                            @foreach (var unit in Enum.GetValues<UnitType>())
+                                            {
+                                                <option value="@unit" selected="@(unit == p.Unit)">@unit.GetName()</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="input-group input-group-sm">
+                                            <input name="Description" value="@p.Description" class="form-control" placeholder="توضیحات" />
+                                            <button type="submit" class="btn btn-success">ذخیره</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

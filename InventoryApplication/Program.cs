@@ -7,7 +7,10 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages(options =>
+{
+    options.RootDirectory = "/Web";
+});
 builder.Services.AddApplication();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(
