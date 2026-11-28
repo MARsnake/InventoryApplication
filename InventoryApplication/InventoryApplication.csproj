@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <Folder Include="Application\Exeptions\" />
+    <Folder Include="Application\Validators\Companies\" />
   </ItemGroup>
 
   <ItemGroup>
